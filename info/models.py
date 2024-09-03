@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 # Create your models here.
@@ -39,11 +40,11 @@ class Info(models.Model):
     supply = models.IntegerField(null=True, blank=True)
     private_mint_price = models.IntegerField(null=True, blank=True)
     public_mint_price = models.IntegerField(null=True, blank=True)
-    private_mint_time = models.CharField(max_length=20, null=True, blank=True)
-    public_mint_time = models.CharField(max_length=20, null=True, blank=True)
-    public_mint_date = models.CharField(max_length=20, null=True, blank=True)
-    private_mint_date = models.CharField(max_length=20, null=True, blank=True)
-    click_count = models.PositiveBigIntegerField(default=0)
+    private_mint_time = models.TimeField(default=datetime.datetime.now)
+    public_mint_time = models.TimeField(default=datetime.datetime.now)
+    public_mint_date = models.DateField(default=datetime.datetime.now)
+    private_mint_date = models.DateField(default=datetime.datetime.now)
+    click_count = models.PositiveBigIntegerField(default=0, editable=False)
     paid_status = models.BooleanField(default=False)
     verified = models.BooleanField(null=True, blank=True, default=True)
     flagged = models.BooleanField(null=True, blank=True, default=False)
