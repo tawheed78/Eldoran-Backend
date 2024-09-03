@@ -26,6 +26,49 @@ class Info(models.Model):
         ('sports', 'Sports'),
         ('other', 'Other'),
     ]
+    BLOCKCHAIN_CHOICES = [
+    ('bitcoin', 'Bitcoin'),
+    ('ethereum', 'Ethereum'),
+    ('solana', 'Solana'),
+    ('polygon', 'Polygon'),
+    ('avalanche', 'Avalanche'),
+    ('aptos', 'Aptos'),
+    ('cardano', 'Cardano'),
+    ('near', 'Near'),
+    ('sui', 'Sui'),
+    ('algorand', 'Algorand'),
+    ('multiversx', 'MultiversX'),
+    ('arbitrum', 'Arbitrum'),
+    ('sei', 'Sei'),
+    ('binance', 'Binance'),
+    ('cosmos', 'Cosmos'),
+    ('hedera', 'Hedera'),
+    ('venom', 'Venom'),
+    ('icon', 'Icon'),
+    ('immutable', 'Immutable'),
+    ('injective', 'Injective'),
+    ('ripple', 'Ripple'),
+    ('dogecoin', 'Dogecoin'),
+    ('base', 'Base'),
+    ('wax', 'Wax'),
+    ('flow', 'Flow'),
+    ('reef', 'Reef'),
+    ('internet_computer', 'Internet Computer'),
+    ('starknet', 'StarkNet'),
+    ('myria', 'Myria'),
+    ('monad', 'Monad'),
+    ('berachain', 'Berachain'),
+    ('stargaze', 'Stargaze'),
+    ('blast', 'Blast'),
+    ('osmosis', 'Osmosis'),
+    ('zksync', 'ZKSync'),
+    ('enjin', 'Enjin'),
+    ('linea', 'Linea'),
+    ('skale_network', 'Skale Network'),
+    ('ton', 'Ton'),
+    ('oraichain', 'Oraichain'),
+    ]
+
     info_id = models.AutoField(primary_key=True, unique=True)
     title = models.CharField(max_length=100, null=True, blank=True)
     desc = models.CharField(max_length=100, null=True, blank=True)
@@ -35,7 +78,7 @@ class Info(models.Model):
     front_image = models.ImageField(upload_to ='uploads/% Y/% m/% d/',null=True, blank=True)
     # background_image
     background_image= models.ImageField(upload_to ='uploads/% Y/% m/% d/',null=True, blank=True)
-    blockchain = models.CharField(max_length=100, null=True, blank=True)
+    blockchain = models.CharField(max_length=100, choices=BLOCKCHAIN_CHOICES, null=False, blank=False, default='Bitcoin')
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, null=False, default='other')
     supply = models.IntegerField(null=True, blank=True)
     private_mint_price = models.IntegerField(null=True, blank=True)
